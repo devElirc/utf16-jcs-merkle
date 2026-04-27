@@ -80,7 +80,8 @@ def _normalize_traced_path(raw: str, cwd: str) -> str:
 
 
 def _utf16be_key_bytes(s: str) -> bytes:
-    return s.encode("utf-16-be", errors="strict")
+    # Use surrogatepass so unpaired surrogates roundtrip as code units.
+    return s.encode("utf-16-be", errors="surrogatepass")
 
 
 def _escape_string_ascii(s: str) -> str:

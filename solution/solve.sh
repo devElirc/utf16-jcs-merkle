@@ -13,7 +13,7 @@ OUTPUT = Path("/app/report.json")
 
 
 def _utf16be_key_bytes(s: str) -> bytes:
-    return s.encode("utf-16-be", errors="strict")
+    return s.encode("utf-16-be", errors="surrogatepass")
 
 
 def _escape_string_ascii(s: str) -> str:
