@@ -1,0 +1,8 @@
+I need a Python script at `/app/utf16_merkle.py` that reads `/app/records.json` and writes `/app/report.json`. Run from `/app`. While running, only open `/app/records.json` for input and only write `/app/report.json` for output. Do not read or import anything under `/tests`, `/oracle`, `/solution`, or `/logs`.
+
+`/app/records.json` is a JSON array of objects, each with `id` (string) and `payload` (any JSON value). Your output `/app/report.json` must be a JSON object with exactly `records` (same length/order as input) and `merkle_root_sha256` (lowercase hex). Each element of `records` must be `{"id": <verbatim id>, "canonical": <string>, "sha256": <lowercase hex>}` where `sha256` is SHA-256 of the canonical UTF-8 bytes of the payload.
+
+The `canonical` string is a whitespace-free, ASCII-only canonical JSON encoding of `payload`. Arrays keep order. Objects must have keys sorted by UTF-16 code units (lexicographic by the UTF-16BE bytes of the key string). Numbers are integers; write minimal decimal (`-0` becomes `0`). Write booleans as `true`/`false` and null as `null`. For strings: escape `"` and `\`, escape all code points < U+0020 as `\u00xx` (lowercase hex), and escape every non-ASCII code point as `\uXXXX` (lowercase hex); for code points > U+FFFF, use UTF-16 surrogate pairs (two `\uXXXX` sequences). Do not use `\/` and do not output raw non-ASCII bytes.
+
+Compute `merkle_root_sha256` from the list of per-record 32-byte digests (input order) using a binary Merkle tree: parent = SHA256(left || right), duplicate the last node on odd levels. Use only the Python standard library, and do not use `eval`, `exec`, `compile`, or `__import__`, and do not import `numpy`, `pandas`, `ujson`, `orjson`, or `simplejson`.
+

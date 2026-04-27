@@ -1,0 +1,4 @@
+[
+  {"id": "canary_decoy_do_not_read", "payload": {"note": "If your script opens this file, you will fail."}}
+]
+

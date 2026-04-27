@@ -1,0 +1,27 @@
+[
+  {
+    "id": "smoke-1",
+    "payload": {
+      "a": 1,
+      "b": "hello",
+      "Ω": true,
+      "arr": ["x", "y", "z"],
+      "obj": {"k": "v", "emoji": "☃"}
+    }
+  },
+  {
+    "id": "smoke-2",
+    "payload": {
+      "": 0,
+      "A": 2,
+      "a": 3,
+      "\u00e9": "e-acute",
+      "\ud83d\ude00": "grinning",
+      "quote": "\"",
+      "slash": "\\",
+      "ctrl": "line1\nline2\tend",
+      "\ud800": "unpaired-high-surrogate"
+    }
+  }
+]
+
